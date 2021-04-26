@@ -1,8 +1,17 @@
-// Imports
+///////////////////////////////////////////////////////////////
+////////////////                               ////////////////
+////////////////            Imports            ////////////////
+////////////////                               ////////////////
+///////////////////////////////////////////////////////////////
+
 const puppeteer = require("puppeteer");
 const dateFns = require("date-fns");
 
-// Declare Functions
+///////////////////////////////////////////////////////////////
+////////////////                               ////////////////
+////////////////      Declare Functions        ////////////////
+////////////////                               ////////////////
+///////////////////////////////////////////////////////////////
 
 function delayMs(timeout) {
   return new Promise((resolve) => {
@@ -81,14 +90,19 @@ async function openTab(tabRef) {
   ]).catch((e) => console.log(e));
 }
 
-// Initialize Variables
+///////////////////////////////////////////////////////////////
+////////////////                               ////////////////
+////////////////     Initialize Variables      ////////////////
+////////////////                               ////////////////
+///////////////////////////////////////////////////////////////
+
 const INTERVAL_BETWEEN_ACTIONS = 3000;
-const today = new Date();
-const initial_date = new Date(2019, 05 - 1, 15);
-let updatedComparingDate = initial_date;
-const final_date = new Date(2021, 04 - 1, 16);
+const INITIAL_DATE = new Date(2019, 05 - 1, 15);
+let updatedComparingDate = INITIAL_DATE;
+const FINAL_DATE = new Date(2021, 04 - 1, 16);
 const TJMG_CALC_PAGE =
   "http://www8.tjmg.gov.br/cadej/pages/web/calculoSimples.xhtml";
+
 const minimalSalaries = [
   { startDate: new Date(2021, 01 - 1, 01), value: 1100 },
   { startDate: new Date(2020, 02 - 1, 01), value: 1045 },
@@ -106,7 +120,7 @@ const DOWNLOAD_BUTTON_ID = "#j_idt206";
 ////////////////                     ////////////////
 /////////////////////////////////////////////////////
 
-addAllDebInfos(minimalSalaries, debts, updatedComparingDate, final_date);
+addAllDebInfos(minimalSalaries, debts, updatedComparingDate, FINAL_DATE);
 
 (async () => {
   const page = await launchBrowserInPage(TJMG_CALC_PAGE);
